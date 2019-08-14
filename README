@@ -10,6 +10,9 @@ Filelist
   python-pip - alternative Python package installer
   # aptitude install python-pip
 
+links.txt
+  pip (Python package installer) related links
+
 packages.txt
   pip related packages
 
