@@ -3,18 +3,13 @@ Created Sat Sep 16 10:27:08 AKDT 2017
 Copyright (C) 2017 by Raymond E. Marcil <marcilr@gmail.com>
 
 
-Installation of pip (Python package installer)
+Installation of pip (Python package installer) on Red Hat
 
 
 python-pip - alternative Python package installer
 
 
-Red Hat
-=======
-...
-
-
-intdev
+intdev (Red Hat v6.10)
 ======
 $ python --version
 Python 2.6.6
@@ -23,7 +18,82 @@ $
 # yum list | grep python-pip
 #
 
-Still need syntax...
+
+EPEL (Extra Packages for Enterprise Linux) 
+==========================================
+With the EPEL (Extra Packages for Enterprise Linux) package
+installed, see ../../epel/epel.txt:
+  $ wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+  # yum install ./epel-release-latest-*.noarch.rpm
+
+
+Install python-pip
+==================
+# cat /etc/redhat-release 
+Red Hat Enterprise Linux Server release 6.10 (Santiago)
+# 
+
+# yum install python-pip
+Loaded plugins: product-id, refresh-packagekit, search-disabled-repos, subscription-manager
+Setting up Install Process
+epel/metalink                                                                         |  18 kB     00:00     
+epel                                                                                  | 5.3 kB     00:00     
+https://mirror.umd.edu/fedora/epel/6/x86_64/repodata/repomd.xml: [Errno -1] repomd.xml does not match metalink for epel
+Trying other mirror.
+epel                                                                                  | 5.3 kB     00:00     
+epel/primary_db                                                                       | 6.1 MB     00:04     
+Resolving Dependencies
+--> Running transaction check
+---> Package python-pip.noarch 0:7.1.0-1.el6 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=============================================================================================================================
+ Package                        Arch                       Version                            Repository                Size
+=============================================================================================================================
+Installing:
+ python-pip                     noarch                     7.1.0-1.el6                        epel                     1.5 M
+
+Transaction Summary
+=============================================================================================================================
+Install       1 Package(s)
+
+Total download size: 1.5 M
+Installed size: 6.6 M
+Is this ok [y/N]: y
+Downloading Packages:
+python-pip-7.1.0-1.el6.noarch.rpm                                                                     | 1.5 MB     00:01     
+warning: rpmts_HdrFromFdno: Header V3 RSA/SHA256 Signature, key ID 0608b895: NOKEY
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
+Importing GPG key 0x0608B895:
+ Userid : EPEL (6) <epel@fedoraproject.org>
+ Package: epel-release-6-8.noarch (@/epel-release-latest-6.noarch)
+ From   : /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
+Is this ok [y/N]: y
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing : python-pip-7.1.0-1.el6.noarch                                                                             1/1
+  Verifying  : python-pip-7.1.0-1.el6.noarch                                                                             1/1 
+
+Installed:
+  python-pip.noarch 0:7.1.0-1.el6                                                                                            
+
+Complete!
+# 
+
+# type pip
+pip is /usr/bin/pip
+#
+
+# pip --version
+pip 7.1.0 from /usr/lib/python2.6/site-packages (python 2.6)
+# 
+
+
+Looks good!
 
 
 Links
@@ -31,4 +101,7 @@ Links
 How to install pip on Red Hat Enterprise Linux?
 SOLUTION VERIFIED - Updated March 15 2019 at 6:53 AM - English
 https://access.redhat.com/solutions/1519803
+
+Installing pip/setuptools/wheel with Linux Package Managers
+https://packaging.python.org/guides/installing-using-linux-tools/
 
