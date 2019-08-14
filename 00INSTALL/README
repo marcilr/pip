@@ -10,3 +10,8 @@ INSTALL-debian
 
 INSTALL-redhat
   Installation of pip (Python package installer) on Red Hat
+
+  Has two sections:
+  o EPEL (Extra Packages for Enterprise Linux)
+  o Install python-pip
+
