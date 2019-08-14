@@ -8,5 +8,5 @@ Filelist
 INSTALL-debian
   pip installation on debian
 
-INSTALL-red-hat
+INSTALL-redhat
   Installation of pip (Python package installer) on Red Hat
