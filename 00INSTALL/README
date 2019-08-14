@@ -9,4 +9,4 @@ INSTALL-debian
   pip installation on debian
 
 INSTALL-red-hat
-  pip installation on Red Hat
+  Installation of pip (Python package installer) on Red Hat
