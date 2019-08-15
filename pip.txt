@@ -12,7 +12,7 @@ Synopsys
        pip3 <command> [options]
 
 Description
-       pip  is  a  Python package installer, recommended for installing
+       pip is a Python package installer, recommended for installing
        Python packages which are not available in the Debian archive.
        It can work with version control repositories (currently only Git,
        Mercurial, and Bazaar repositories), logs output extensively, and
