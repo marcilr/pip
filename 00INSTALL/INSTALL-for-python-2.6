@@ -1,0 +1,167 @@
+INSTALL-for-python-2.6
+Created Thu Aug 15 07:57:15 AKDT 2019
+Copyright (C) 2019 by Raymond E. Marcil <marcilr@gmail.com>
+
+
+Installation of pip (python package installer) for Python 2.6
+under Red Hat Enterprise Linux Server release 6.10 (Santiago
+(on State of Alaska OIT DNR intdev system)
+
+The latest version of pip runs against the lastet
+stable version python.  Since the intdev system is
+running older Python 2.6 a compatible version of pip
+needed to be installed,
+
+
+Used the following procedure to install pip
+for Python 2.6
+
+Verify python2.6 available:
+  # type python2.6
+  python2.6 is /usr/bin/python2.6
+  #
+
+pip is in the epel package:
+  Checking if installed:
+  # yum list | grep ^epel
+  epel-release.noarch       6-8    @/epel-release-latest-6.noar$
+  epel-rpm-macros.noarch    6-21   epel
+  #
+
+
+1. Remove non-working pip (lasted version):
+
+Verify latest pip in python-pip package:
+# yum list installed | grep pip
+python-pip.noarch   7.1.0-1.el6   @epel
+#
+
+# repoquery --list python-pip | grep bin
+/usr/bin/pip
+/usr/bin/pip2
+/usr/bin/pip2.6
+#
+
+# yum remove python-pip
+Loaded plugins: product-id, refresh-packagekit, search-disabled-repos,
+              : subscription-manager
+Setting up Remove Process
+Resolving Dependencies
+--> Running transaction check
+---> Package python-pip.noarch 0:7.1.0-1.el6 will be erased
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package             Arch            Version               Repository      Size
+================================================================================
+Removing:
+ python-pip          noarch          7.1.0-1.el6           @epel          6.6 M
+
+Transaction Summary
+================================================================================
+Remove        1 Package(s)
+
+Installed size: 6.6 M
+Is this ok [y/N]: y
+...
+warning:    erase unlink of /usr/lib/python2.6/site-packages/pip-7.1.0-py2.6.egg-info/PKG-INFO failed: No such file or directory
+warning:    erase unlink of /usr/lib/python2.6/site-packages/pip-7.1.0-py2.6.egg-info failed: No such file or directory
+  Verifying  : python-pip-7.1.0-1.el6.noarch                                1/1
+
+Removed:
+  python-pip.noarch 0:7.1.0-1.el6
+
+Complete!
+#
+
+Verify removal:
+  # yum list installed | grep pip
+  #
+
+
+2. Install pip for python 2.6
+
+Just follow the instructions here:
+  1. Securely download get-pip.py.[1]
+  2. In the directory you saved get-pip.py, run
+     sudo python2.6 get-pip.py
+
+  and you'll be all set.
+
+  This will install pip for Python 2.6, and won't
+  touch your version 2.7 installation.
+  --answered Jun 18 '14 at 20:36, MattDMo
+    stackoverflow.com/questions/24294467/how-to-install-pip-for-python-2-6
+
+
+Login to target intdev system:
+  $ ssh intdev
+  Password:
+  Last login: Thu Aug 15 07:34:25 2019 from 204.29.174.35
+  $
+
+Get get-pip.py for Python 2.6:
+  # curl https://bootstrap.pypa.io/2.6/get-pip.py
+
+Run get-pip.py script:
+  # python2.6 get-pip.py
+  DEPRECATION: Python 2.6 is no longer supported by the Python core team, \
+  please upgrade your Python. A future version of pip will drop support \
+  for Python 2.6
+  Collecting pip<10
+  /tmp/tmp1nZkn9/pip.zip/pip/_vendor/urllib3/util/ssl_.py:339: \
+  SNIMissingWarning: An HTTPS request has been made, but the SNI \
+  (Subject Name Indication) extension to TLS is not available on \
+  this platform. This may cause the server to present an incorrect TLS certificate, which can cause validation failures. You can upgrade to a newer version of Python to solve this. For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  /tmp/tmp1nZkn9/pip.zip/pip/_vendor/urllib3/util/ssl_.py:137: InsecurePlatformWarning: A true SSLContext object is not available. This prevents urllib3 from configuring SSL appropriately and may cause certain SSL connections to fail. You can upgrade to a newer version of Python to solve this. For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  /tmp/tmp1nZkn9/pip.zip/pip/_vendor/urllib3/util/ssl_.py:137: InsecurePlatformWarning: A true SSLContext object is not available. This prevents urllib3 from configuring SSL appropriately and may cause certain SSL connections to fail. You can upgrade to a newer version of Python to solve this. For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+    Downloading https://files.pythonhosted.org/packages/ac/95/a05b56bb975efa78d3557efa36acaf9cf5d2fd0ee0062060493687432e03/pip-9.0.3-py2.py3-none-any.whl (1.4MB)
+      100% |...| 1.4MB 638kB/s
+  Collecting wheel<0.30
+  /tmp/tmp1nZkn9/pip.zip/pip/_vendor/urllib3/util/ssl_.py:137: InsecurePlatformWarning: A true SSLContext object is not available. This prevents urllib3 from configuring SSL appropriately and may cause certain SSL connections to fail. You can upgrade to a newer version of Python to solve this. For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+    Downloading https://files.pythonhosted.org/packages/8a/e9/8468cd68b582b06ef554be0b96b59f59779627131aad48f8a5bce4b13450/wheel-0.29.0-py2.py3-none-any.whl (66kB)
+      100% |...| 71kB 1.3MB/s
+  /tmp/tmp1nZkn9/pip.zip/pip/_vendor/urllib3/util/ssl_.py:137: InsecurePlatformWarning: A true SSLContext object is not available. This prevents urllib3 from configuring SSL appropriately and may cause certain SSL connections to fail. You can upgrade to a newer version of Python to solve this. For more information, see https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  Collecting argparse; python_version == "2.6" (from wheel<0.30)
+    Downloading https://files.pythonhosted.org/packages/f2/94/3af39d34be01a24a6e65433d19e107099374224905f1e0cc6bbe1fd22a2f/argparse-1.4.0-py2.py3-none-any.whl
+  Installing collected packages: pip, argparse, wheel
+    Found existing installation: pip 19.2.2
+      Uninstalling pip-19.2.2:
+        Successfully uninstalled pip-19.2.2
+    Found existing installation: argparse 1.2.1
+      Uninstalling argparse-1.2.1:
+        Successfully uninstalled argparse-1.2.1
+  Successfully installed argparse-1.4.0 pip-9.0.3 wheel-0.29.0
+  You are using pip version 9.0.3, however version 19.2.2 is available.
+  You should consider upgrading via the 'pip install --upgrade pip' command.
+  #
+
+Verify pip installation:
+  # type pip
+  pip is /usr/bin/pip
+  #
+
+  # pip --version
+  pip 9.0.3 from /usr/lib/python2.6/site-packages (python 2.6)
+  #
+
+--How to install pip for python 2.6?  <===
+  https://stackoverflow.com/questions/24294467/how-to-install-pip-for-python-2-6
+
+Looks good.
+
+
+
+Links
+=====
+[1] get-pip.py
+These abstract steps look great.  However, the referenced
+get-pip.py did not work on intdev.  Has some type of
+incompatibility.  Used script from stackoverflow below
+that resolved the issue.
+https://bootstrap.pypa.io/get-pip.py
+
+How to install pip for python 2.6?
+https://stackoverflow.com/questions/24294467/how-to-install-pip-for-python-2-6
